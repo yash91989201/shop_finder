@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: shopfinder_db
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=yash
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    volumes:
+      - mongo-db:/data/db
+  api:
+    build:
+      args:
+        - NODE_ENV=development
+      # environment:
+      #   - NODE_ENV=development
+    command: npm run dev
+  client:
+    build:
+      args:
+        - NODE_ENV=development
+    command: npm start
+      #     networks:
+      #       - shared-network
+volumes:
+  mongo-db:
+    # networks:
+    #   shared-network:
