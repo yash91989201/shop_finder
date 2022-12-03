@@ -14,14 +14,16 @@ services:
     build:
       args:
         - NODE_ENV=production
-      environment:
-        - NODE_ENV=production
     command: [ "/bin/sh", "-c", "npm run build;npm  start" ]
   client:
     build:
       args:
-        - NODE_ENV=development
-    command: [ "npm run build;serve build" ]
+        - NODE_ENV=production
+    command: [ "/bin/sh", "-c", "npm run build;serve -s build" ]
+  nginx:
+    ports:
+      - 80:80
+
 volumes:
   mongo-db:
     # networks:

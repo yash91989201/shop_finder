@@ -18,8 +18,10 @@ services:
       context: api
       # target: prod
       dockerfile: Dockerfile
-    ports:
-      - 5000:5000
+    environment:
+      - SECRET_KEY=LAJGLKJDFNLKJDNFHLKJNL43JK562L4KJNLJKN
+    # ports:
+    #   - 5000:5000
     depends_on:
       - mongodb
   client:
@@ -30,23 +32,23 @@ services:
       context: client
       # target: prod
       dockerfile: Dockerfile
-    ports:
-      - 3000:3000
+    # ports:
+    #   - 3000:3000
     depends_on:
       - api
   nginx:
+    image: nginx:stable-alpine
     container_name: shopfinder_nginx
     depends_on:
       - api
       - client
-    restart: always
     build:
       dockerfile: Dockerfile
       context: ./nginx
-    ports:
-      - "3050:80"
-#     networks:
-#       - shared-network
+    # volumes:
+    #   - /default.conf:/etc/nginx/conf.d/default.conf:ro
+    #     networks:
+    #       - shared-network
 volumes:
   mongo-db:
     # networks:

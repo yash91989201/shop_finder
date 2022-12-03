@@ -8,8 +8,8 @@ COPY package.json .
 ARG NODE_ENV
 RUN if [ "${NODE_ENV}" = "development"  ]; \
     then npm install;\
-    else npm install --production;\
-    npm i -g serve;\
+    else npm install --production &&\
+    npm install -g serve;\
     fi
 
 COPY . .

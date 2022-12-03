@@ -25,7 +25,7 @@ interface QueryResponse<T> {
 const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5000/api/v1/seller",
+    baseUrl: "http://localhost:80/api/v1/seller",
   }),
 
   endpoints: (builder) => ({

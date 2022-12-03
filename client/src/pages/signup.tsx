@@ -19,10 +19,11 @@ export default function Signup(): React.ReactElement {
   const [signupMutation] = useSignupUserMutation();
   const { data, refetch } = useCheckAuthStatusQuery("");
   if (data?.isAuthenticated) {
-    navigate("/my-shops");
+    navigate("/my-shop");
   }
   const signupUser: SubmitHandler<SignupFormProps> = async (formData) => {
     await signupMutation(formData);
+    navigate("/login");
     refetch();
   };
   return (

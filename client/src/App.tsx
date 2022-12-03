@@ -16,10 +16,10 @@ export default function App(): React.ReactElement {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          {/* <Route element={<ProtectedRoute />}> */}
-          <Route path="/my-shops" element={<MyShops />}></Route>
-          <Route path="/my-shops/:shop_id" element={<SingleShop />} />
-          {/* </Route> */}
+          <Route element={<ProtectedRoute />}>
+            <Route path="/my-shops" element={<MyShops />} />
+            <Route path="/my-shops/:shop_id" element={<SingleShop />} />
+          </Route>
         </Routes>
       </Layout>
     </div>
