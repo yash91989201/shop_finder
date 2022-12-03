@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { api_baseurl } from "../../config";
 
 interface SellerType {
   _id: string;
@@ -25,7 +26,7 @@ interface QueryResponse<T> {
 const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:80/api/v1/seller",
+    baseUrl: `${api_baseurl}/seller`,
   }),
 
   endpoints: (builder) => ({

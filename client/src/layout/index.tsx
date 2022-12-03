@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 import { FaShopify } from "react-icons/fa";
+import { BiLogOut, BiLogIn } from "react-icons/bi";
 import {
   useCheckAuthStatusQuery,
   useLogoutUserMutation,
@@ -22,10 +23,12 @@ export default function Layout({ children }: { children: React.ReactElement }) {
     <>
       {!is_auth_route && (
         <header className="p-3 text-white bg-indigo-500 lg:px-0">
-          <div className="flex items-center justify-between max-w-6xl mx-auto">
+          <div className="flex items-center justify-between max-w-6xl px-6 mx-auto md:px-0">
             <div className="flex items-center space-x-3">
               <FaShopify className="text-4xl" />
-              <p className="text-xl font-semibold">Shop Finder</p>
+              <p className="hidden text-xl font-semibold md:block">
+                Shop Finder
+              </p>
             </div>
             <div>
               {!!data && data.isAuthenticated ? (
@@ -47,22 +50,22 @@ export default function Layout({ children }: { children: React.ReactElement }) {
                     onClick={() => {
                       logoutUser("").then((res) => {
                         refetch();
-                        // navigate("/");
-                        // window.location.reload();
                         window.location.href = "/";
                       });
                     }}
                     className="p-3 py-1.5 bg-white rounded-full  text-indigo-500 text-base font-semibold"
                   >
-                    Logout
+                    <span className="hidden md:block">Logout</span>
+                    <BiLogOut className="md:hidden" />
                   </button>
                 </div>
               ) : (
                 <Link
                   to="/login"
-                  className="p-3 py-1.5 bg-white rounded-full  text-indigo-500 text-base font-semibold"
+                  className="p-2 rounded-md md:p-3 md:py-1.5 bg-white md:rounded-full  text-indigo-500 text-base font-semibold"
                 >
-                  Seller Login
+                  <span className="hidden md:inline">Seller Login</span>
+                  <BiLogIn className="inline md:hidden" />
                 </Link>
               )}
             </div>

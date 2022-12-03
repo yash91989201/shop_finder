@@ -12,6 +12,8 @@ RUN if [ "${NODE_ENV}" = "development"  ]; \
     npm install -g serve;\
     fi
 
+ENV NODE_ENV=${NODE_ENV}
+
 COPY . .
 # create a build folder
 # RUN npm run build

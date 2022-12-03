@@ -12,10 +12,10 @@ RUN if [ "${NODE_ENV}" = "development"  ]; \
     else npm install --production;\
     fi
 
+ENV NODE_ENV=${NODE_ENV}
+
 COPY . .
 
-ENV PORT=5000
-EXPOSE $PORT 
 # create a build folder
 # RUN npm run build
 # RUN - command executed during image creation

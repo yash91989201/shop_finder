@@ -30,9 +30,11 @@ export default function MyShops(): React.ReactElement {
   };
   return (
     <>
-      <h2 className="text-2xl font-semibold">Manage shops in one place</h2>
-      <div className="flex">
-        <div className="flex flex-col space-y-6 ">
+      <h2 className="mb-6 text-3xl font-semibold text-center text-indigo-500 md:text-left">
+        Manage your shops.
+      </h2>
+      <div className="flex flex-col max-w-6xl px-3 space-y-6 md:px-0 md:flex-row md:space-y-0">
+        <div className="flex flex-col flex-1 px-6 space-y-6 md:px-0">
           {!!shop_list &&
             shop_list.data.shop.map((shop) => (
               <Link to={`/my-shops/${shop._id}`} key={shop._id}>
@@ -40,11 +42,14 @@ export default function MyShops(): React.ReactElement {
               </Link>
             ))}
         </div>
-        <div className="max-w-xl p-6 text-white bg-indigo-100 border rounded  h-fit">
+        <div className="p-6 text-white bg-indigo-100 border rounded md:mx-3 h-fit">
           <form
             onSubmit={handleSubmit(addShop)}
-            className="flex flex-col space-y-3"
+            className="flex flex-col space-y-6"
           >
+            <p className="mb-3 text-xl font-semibold text-center text-black">
+              Add new shop
+            </p>
             <input
               type="text"
               {...register("name", { required: true })}

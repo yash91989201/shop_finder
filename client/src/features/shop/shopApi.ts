@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { api_baseurl } from "../../config";
 
 export interface ShopType {
   _id: string;
@@ -28,7 +29,7 @@ interface QueryResponse<T> {
 // Define a service using a base URL and expected endpoints
 const shopApi = createApi({
   reducerPath: "shopApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:80/api/v1/shop" }),
+  baseQuery: fetchBaseQuery({ baseUrl: `${api_baseurl}/shop` }),
   endpoints: (builder) => ({
     getShops: builder.query<QueryResponse<ShopType[]>, {}>({
       query: () => ({

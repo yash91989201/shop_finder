@@ -8,7 +8,7 @@ export default function Home(): React.ReactElement {
   if (isLoading) return <p>Loading ...</p>;
   return (
     <section>
-      <div className="space-y-3">
+      <div className="flex flex-col flex-1 px-6 space-y-6 md:px-0">
         {!!shop_list &&
           shop_list.data.shop.map((shop) => (
             <ShopCard shop={shop} key={shop._id} />
